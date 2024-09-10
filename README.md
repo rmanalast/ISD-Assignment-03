@@ -5,10 +5,13 @@ an entire system will be created to manage bank transactions for clients who
 have one or more bank accounts.
 
 ## Author
-[Your name]
+Raven Manalastas
 
 ## Assignment
-Assignment [assignment number]: [Indicate the name and description of the current assignment]
+Assignment 1: Classes, Encapsulation and Unit Test Planning. 
+This assignment will produce some foundational classes to be used in an overall system. 
+Focusing on encapsulation through private attributes and public accessors/mutators, as covered in Module 01, 
+and the classes will undergo detailed unit testing, including careful test planning. 
 
 ## Encapsulation
 [use this section to explain how Encapsulation was achieved in the BankAccount and Transaction classes.]
