@@ -19,7 +19,7 @@ class Client:
     first_name(): Accessor for the first_name attribute.
     last_name(): Accessor for the last_name atrribute.
     email_address(): Acccessor for the email_address atrribute.
-    __str__ ():
+    __str__ (): Returns a string representation of the client object.
     """
 
     def __init__(self, client_number: int, first_name: str, last_name: str, email_address: str):
