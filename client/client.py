@@ -49,9 +49,9 @@ class Client:
             self.__first_name = first_name
         
         if len(last_name.strip()) == 0:
-            self.__last_name = last_name
-        else:
             raise ValueError("Last name cannot be blank.")
+        else:
+            self.__last_name = last_name
         
         #this try block validates the email argument, if it is valid, set the-
         #-email attribute to the email argument, if it hits an exception-
