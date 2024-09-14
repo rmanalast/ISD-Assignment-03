@@ -14,4 +14,7 @@ Focusing on encapsulation through private attributes and public accessors/mutato
 and the classes will undergo detailed unit testing, including careful test planning. 
 
 ## Encapsulation
-[use this section to explain how Encapsulation was achieved in the BankAccount and Transaction classes.]
+Encapsulation is a key concept in object-oriented programming. 
+It combines data and methods to protect data from outside interference. 
+In the BankAccount and Transaction classes, private data is hidden, and public methods like deposit and withdraw 
+allow users to interact with the class without knowing the internal details. This makes the classes easy to use and maintain.
