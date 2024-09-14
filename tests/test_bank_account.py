@@ -118,9 +118,10 @@ class TestBankAccount(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.bank_account.withdraw(2600)
 
-    def test_str_returns_string_representation(self):
-        # Arrange: Done in the setUp
-        # Act (Method Inputs)
-        account_string = str(self.bank_account)
-        # Assert (Expected Value)
-        self.assertEqual(account_string, "Account Number: 710 Balance: $2,500.00")
+    def test_str_returns_formatted_string(self):
+        # Arrange
+        # Remaining arrange is in setUp
+        excepted = "Account Number: 710 Balance: $2,500.00"
+
+        # Act and Assert
+        self.assertEqual(excepted, str(self.bank_account))
