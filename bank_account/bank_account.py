@@ -34,24 +34,25 @@ class BankAccount:
                     When the client number is non-numeric/integer.
                     When the balance cannot be converted to a float
         """
-        if isinstance(account_number, int):
-            self.__account_number = account_number
-        else:
+        if not isinstance(account_number, int):
             raise ValueError("Account number must be an integer.")
         
-        if isinstance(client_number, int):
-            self.__client_number = client_number
-        else:
+        self.__account_number = account_number
+
+        if not isinstance(client_number, int):
             raise ValueError("Client Number must an integer.")
         
+        self.__client_number = client_number
         # this try block validates the balance argument, if it is valid, 
         # set the __balance attribute to the balance argument, 
         # if it hits an exception, set the __balance attribute to 0.0 and print an error message
         try:
-            self.__balance = float(balance)
+            float(balance)
         except ValueError:
-            self.__balance = 0.0
-            print("Invalid balance value. Balance set to 0.0.")
+            balance = 0.0
+            raise ValueError("Invalid balance value. Balance set to 0.0.")
+        
+        self.__balance = balance
 
     @property
     def account_number(self) -> int:
@@ -94,7 +95,7 @@ class BankAccount:
             amount = float(amount)
             self.__balance += amount
         except ValueError:
-            print("Invalid amount value. Balance not updated.")
+            pass
     
     def deposit(self, amount) -> float:
         """
