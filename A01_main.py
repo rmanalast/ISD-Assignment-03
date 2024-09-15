@@ -63,7 +63,7 @@ def main():
 
     # 6. Attempt to deposit a non-numeric value into the BankAccount create in step 3. 
     try:
-        bank_account.deposit("non-numeric value")
+        bank_account.deposit("zero")
     except ValueError as e:
         print(f"Error: {e}")
 
@@ -84,7 +84,7 @@ def main():
 
     # 9. Attempt to withdraw a non-numeric value from the BankAccount create in step 3. 
     try:
-        bank_account.withdraw("non-numeric value")
+        bank_account.withdraw("zero")
     except ValueError as e:
         print(f"Error: {e}")
 

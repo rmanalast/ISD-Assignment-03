@@ -94,6 +94,8 @@ class BankAccount:
         try:
             amount = float(amount)
             self.__balance += amount
+            if amount < 0:
+                amount - self.balance
         except ValueError:
             pass
     
@@ -108,12 +110,12 @@ class BankAccount:
             ValueError: When the amount is not numeric or not positive.
         """
         try:
-            amount = float(amount)
-            if amount <= 0:
-                raise ValueError(f"Deposit amount: {amount:,.2f} must be positive.")
+            float(amount)
             self.update_balance(amount)
         except ValueError:
-            raise ValueError("Deposit amount must be numeric.")
+            raise ValueError(f"Deposit amount: {amount} must be numeric.")
+        if amount <= 0:
+            raise ValueError(f"Deposit amount: ${amount:,.2f} must be positive.")
         
     def withdraw(self, amount) -> float:
         """
@@ -126,14 +128,14 @@ class BankAccount:
             ValueError: When the amount is not numeric, not positive, or exceeds the account balance.
         """
         try:
-            amount = float(amount)
-            if amount <= 0:
-                raise ValueError(f"Withdrawal amount: {amount:,.2f} must be positive.")
-            if amount > self.__balance:
-                raise ValueError(f"Withdrawal amount: {amount:,.2f} must not exceed the account balance: {self.__balance:,.2f}")
-            self.update_balance(-amount)
+            float(amount)
+            self.update_balance(-abs(amount))
         except ValueError:
-            raise ValueError("Withdraw amount must be numeric.")
+             raise ValueError(f"Withdraw amount: {amount} must be numeric.")
+        if amount <= 0:
+            raise ValueError(f"Withdrawal amount: ${amount:,.2f} must be positive.")
+        if amount > self.balance:
+            raise ValueError(f"Withdrawal amount: ${amount:,.2f} must not exceed the account balance: ${self.balance:,.2f}")
         
     def __str__(self) -> str:
         """
