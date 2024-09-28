@@ -11,7 +11,14 @@ Raven Manalastas
 Assignment 1: Classes, Encapsulation and Unit Test Planning. 
 This assignment will produce some foundational classes to be used in an overall system. 
 Focusing on encapsulation through private attributes and public accessors/mutators, as covered in Module 01, 
-and the classes will undergo detailed unit testing, including careful test planning. 
+and the classes will undergo detailed unit testing, including careful test planning.
+
+Assignment 2: Applying Object-Oriented Design.
+This Assignment is extending the BankAccount class from the pervious Assignment 1. 
+The BankAccount class will serve as a base class for more specific subclasses. 
+Each subclass will inherit the attributes and methods of the base class while adding its own specific features. 
+Polymorphism will be used by letting each subclass give its own version of a method from the base class. 
+Unit testing will focus on checking that polymorphism works as expected.
 
 ## Encapsulation
 Encapsulation is a key concept in object-oriented programming. 
