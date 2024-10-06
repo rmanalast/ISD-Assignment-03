@@ -4,7 +4,6 @@ Author: Raven Manalastas
 the following command:
     python -m unittest tests/test_investment_account.py
 """
-
 from datetime import date
 from bank_account.investment_account import InvestmentAccount
 import unittest
