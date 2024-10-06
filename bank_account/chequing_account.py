@@ -48,11 +48,9 @@ class ChequingAccount(BankAccount):
         """
         Returns a string representation of the ChequingAccount object.
         """
-        value = super().__str__()
-        value += (f"Account Number: {self.__account_number} Balance: {self.__balance} \n"
-                  f"Overdraft Limit: ${self.__overdraft_limit:,.2f} "
-                  f"Overdraft Rate: {self.__overdraft_rate*100:.2f} % Account Type: Chequing")
-        return value
+        return super().__str__() + (f"\n Overdraft Limit: ${self.__overdraft_limit:.2f} "
+                                   f"Overdraft Rate: {self.__overdraft_rate:.2%} "
+                                   f"Account Type: Chequing") 
     
     def get_service_charges(self) -> float:
         """
