@@ -47,9 +47,9 @@ class InvestmentAccount(BankAccount):
                                         f"Account Type: Investment")
         else:
             return super().__str__() + (f"\nDate Created: {self._date_created} "
-                                        f"Management Fee: Walved Account Type: Investment")
+                                        f"Management Fee: Waived Account Type: Investment")
         
-    def get_services_charges(self) -> float:
+    def get_service_charges(self) -> float:
         """
         Returns the calculated service charges for the account.
         """
