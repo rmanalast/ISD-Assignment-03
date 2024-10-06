@@ -37,7 +37,7 @@ class TestInvestmentAccount(unittest.TestCase):
         """
         # Act and Assert:
         self.investment_account = InvestmentAccount(709, 9710, 450, date(2011, 7, 9), 
-                                                    "Invalid investment")
+                                                    "Invalid investment fee")
         self.assertEqual(2.55, self.investment_account._InvestmentAccount__management_fee)
 
     def test_get_services_charges_method_date_created_more_than_ten_years_ago(self):
