@@ -2,12 +2,16 @@
 Description: A class to manage Bank Account objects.
 Author: Raven Manalastas
 """
-class BankAccount:
+from abc import ABC, abstractmethod
+from datetime import date
+
+class BankAccount(ABC):
     """
     Attributes:
     __account_number (int): An integer value representing the bank account number.
     __client_number (int): An integer value representing the client number representing the account holder.
     __balance (float): A float value representing the current balance of the bank account.
+    _date_created (date): A date object representing the date the account was created. 
 
     Methods:
     __init__(): Initializes the bank_account
@@ -18,15 +22,20 @@ class BankAccount:
     deposit(amount: float): Deposits the given amount into the account.
     withdraw(amount: float): Withdraws the given amount from the account.
     __str__(): Returns a string representation of the bank account.
+    get_service_charges(): Returns the service charges for the account.
     """
 
-    def __init__(self, account_number: int, client_number: int, balance: float):
+    BASE_SERVICE_CHARGE = 0.50
+
+    def __init__(self, account_number: int, client_number: int, balance: float,
+                 date_created: date):
         """
         Initializes the class attributes with argument values.
         Args
             account_number (int): An integer value representing the bank account number.
             client_number (int): An integer value representing the client number representing the account holder.
             blance (float): A float value representing the current balance of the bank account.
+            date_created: (date): A date object representing the date the account was created.
 
         Raises:
             ValueError:
@@ -43,6 +52,7 @@ class BankAccount:
             raise ValueError("Client Number must an integer.")
         
         self.__client_number = client_number
+
         # this try block validates the balance argument, if it is valid, 
         # set the __balance attribute to the balance argument, 
         # if it hits an exception, set the __balance attribute to 0.0 and print an error message
@@ -53,6 +63,12 @@ class BankAccount:
             raise ValueError("Invalid balance value. Balance set to 0.0.")
         
         self.__balance = balance
+
+        #
+        if not isinstance(date_created, date):
+            self._date_created = date.today()
+        else:
+            self._date_created = date_created
 
     @property
     def account_number(self) -> int:
@@ -142,3 +158,13 @@ class BankAccount:
         Returns a string representation of the BankAccount object.
         """
         return f"Account Number: {self.__account_number} Balance: ${self.__balance:,.2f}"
+    
+    @abstractmethod
+    def get_service_charges(self) -> float:
+        """
+        Returns the calculated service charges for the account.
+
+        Returns:
+            float: The calculated service charges.
+        """
+        pass
