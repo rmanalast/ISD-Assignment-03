@@ -42,7 +42,7 @@ class TestSavingsAccount(unittest.TestCase):
 
     def test_service_charges_method_when_balance_greater_than_the_minimum_balance(self):
         """
-        Test that the get_service_charges 
+        Test get_service_charges when balance is greater than minimum.
         """
         # Act and Assert:
         get_service_charges = self.savings_account.get_service_charges()
@@ -51,7 +51,7 @@ class TestSavingsAccount(unittest.TestCase):
 
     def test_service_charges_method_when_balance_equal_to_the_minimum_balance(self):
         """
-        Test that the get_service_charges 
+        Test get_service_charges when balance equals minimum.
         """
         # Act and Assert:
         self.savings_account = SavingsAccount(910, 1910, 100, date(2000, 7, 14), 100)
@@ -61,7 +61,7 @@ class TestSavingsAccount(unittest.TestCase):
 
     def test_service_charges_method_when_balance_less_than_the_minimum_balance(self):
         """
-        Test that the get_service_charges 
+        Test get_service_charges when balance is less than minimum.
         """
         # Act and Assert:
         self.savings_account = SavingsAccount(910, 1910, 50, date(2000, 7, 14), 100)
@@ -71,7 +71,7 @@ class TestSavingsAccount(unittest.TestCase):
 
     def test_str_method_returns_f_string(self):
         """
-        Tests that the
+        Test str method returns formatted account info.
         """
         # Act and Assert:
         self.assertEqual(f"Account Number: 910 Balance: $575.00"
