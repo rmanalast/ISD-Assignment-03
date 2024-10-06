@@ -25,3 +25,12 @@ Encapsulation is a key concept in object-oriented programming.
 It combines data and methods to protect data from outside interference. 
 In the BankAccount and Transaction classes, private data is hidden, and public methods like deposit and withdraw 
 allow users to interact with the class without knowing the internal details. This makes the classes easy to use and maintain.
+
+## Polymorphism
+Polymorphism is the a key concept in the object-oriented programming(OOP).
+it allows objects of different classes to be treated as objects of a common superclass.
+In the BankAccount subclasses, polymorphism is achieved through method overriding, 
+where the 'get_service_charges()' method is implemented differently in each subclass 
+to provide a specific implementation for each account type.
+This allows objects of different BankAccount subclasses to be treated as objects of a common superclass, 
+providing increased flexibility, improved code reuse, and easier maintenance.
