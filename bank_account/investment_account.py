@@ -6,7 +6,7 @@ Author: Raven Manalastas
 from bank_account.bank_account import BankAccount
 from datetime import date, timedelta
 
-class InvestmentAccountb(BankAccount):
+class InvestmentAccount(BankAccount):
     """
     Attributes:
         Inherited attributes from Bank Account Class
