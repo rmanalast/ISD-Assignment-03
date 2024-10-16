@@ -40,6 +40,10 @@ class SavingsAccount(BankAccount):
     def __str__(self) -> str:
         """
         Returns a string representation of the SavingsAccount object.
+
+        Returns: 
+            str: A string containing the account details, 
+                 including the minimum balance and account type.
         """
         return super().__str__() + (f"\nMinimum Balance: ${self.__minimum_balance:.2f} "
                                     f"Account Type: Savings")
@@ -47,6 +51,10 @@ class SavingsAccount(BankAccount):
     def get_service_charges(self) -> float:
         """
         Returns the calculated service charges for the account.
+
+        Returns:
+            float: The total service charges for the account, 
+                   which may vary based on the minimum balance requirement.
         """
         if self.balance >= self.__minimum_balance:
             get_service_charge = self.BASE_SERVICE_CHARGE

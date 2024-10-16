@@ -47,6 +47,10 @@ class ChequingAccount(BankAccount):
     def __str__(self) -> str:
         """
         Returns a string representation of the ChequingAccount object.
+
+        Returns:
+            str: A string containing the account details, 
+                 including the overdraft limit, overdraft rate, and account type.
         """
         return super().__str__() + (f"\n Overdraft Limit: ${self.__overdraft_limit:.2f} "
                                    f"Overdraft Rate: {self.__overdraft_rate:.2%} "
@@ -55,6 +59,10 @@ class ChequingAccount(BankAccount):
     def get_service_charges(self) -> float:
         """
         Returns the calculated service charges for the account.
+
+        Returns: 
+            float: The total service charges for the account, 
+                   the overdraft limit and rate if applicable.
         """
         if self.balance >= self.__overdraft_limit:
             return self.BASE_SERVICE_CHARGE

@@ -37,7 +37,7 @@ def main():
     # BankAccount's client_number. 
     # Use a floating point value for the balance. 
     try:
-        bank_account = BankAccount(710, client.client_number, 2500.00)
+        bank_account = BankAccount(710, 7910, 2500.00)
     except ValueError as e:
         print(f"Error: {e}")
 

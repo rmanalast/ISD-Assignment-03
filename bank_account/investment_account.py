@@ -40,20 +40,36 @@ class InvestmentAccount(BankAccount):
     def __str__(self) -> str:
         """
         Returns a string representation of the InvestmentAccount object.
+
+        Returns:
+            str: A string containing the account details, 
+                 including the date created, management fee 
+                 (if applicable), and account type.
         """
+        # The string varuable calls the abstract method 
+        # of the bank_account string
+        string = super().__str__() 
+
         if self.TEN_YEARS_AGO <= self._date_created:
-            return super().__str__() + (f"\nDate Created: {self._date_created} "
-                                        f"Management Fee: ${self.__management_fee:.2f} "
-                                        f"Account Type: Investment")
+            
+            string += (f"\nDate Created: {self._date_created} "
+                       f"Management Fee: ${self.__management_fee:.2f} "
+                       f"Account Type: Investment")
         else:
-            return super().__str__() + (f"\nDate Created: {self._date_created} "
-                                        f"Management Fee: Waived Account Type: Investment")
+            string += (f"\nDate Created: {self._date_created} "
+                       f"Management Fee: Waived Account Type: Investment")
+            
+        return string
         
     def get_service_charges(self) -> float:
         """
         Returns the calculated service charges for the account.
+
+        Returns:
+            float: The total service charges for the account, 
+                   which may vary based on the account's creation date and management fee.
         """
-        if self._date_created.year < self.TEN_YEARS_AGO.year:
+        if self._date_created < self.TEN_YEARS_AGO:
             get_service_charge = self.BASE_SERVICE_CHARGE
         else:
             get_service_charge = self.BASE_SERVICE_CHARGE + self.__management_fee

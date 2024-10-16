@@ -13,7 +13,7 @@ from datetime import date
 
 # 2. Create an instance of a ChequingAccount with values of your 
 # choice including a balance which is below the overdraft limit.
-chequing_account = ChequingAccount(123, 987, -100, date(2008, 5, 15), 100.0, 0.05)
+chequing_account = ChequingAccount(123, 987, -100.00, date(2008, 5, 15), 100.0, 0.05)
 
 # 3. Print the ChequingAccount created in step 2.
 # 3b. Print the service charges amount if calculated based on the 
@@ -35,14 +35,14 @@ print(f"Calculated Service Charges: ${chequing_service_charge:.2f}")
 print("===================================================")
 # 5. Create an instance of a SavingsAccount with values of your 
 # choice including a balance which is above the minimum balance.
-savings_account = SavingsAccount(150, 255, 250, date(2010, 12, 10), 100)
+savings_account = SavingsAccount(150, 255, 250.00, date(2010, 12, 10), 100)
 
 # 6. Print the SavingsAccount created in step 5.
 # 6b. Print the service charges amount if calculated based on the 
 # current state of the SavingsAccount created in step 5.
 print(savings_account)
-savings_service_charge = savings_account.get_service_charges()
-print(f"Calculated Service Charges: ${savings_service_charge:.2f}")
+print(savings_account.get_service_charges())
+
 
 # 7a. Use this SavingsAccount instance created in step 5 to withdraw 
 # enough money from the savings account to cause the balance to fall 
@@ -50,7 +50,7 @@ print(f"Calculated Service Charges: ${savings_service_charge:.2f}")
 # 7b. Print the SavingsAccount.
 # 7c. Print the service charges amount if calculated based on the 
 # current state of the SavingsAccount created in step 5.
-savings_account.withdraw(100)
+savings_account.withdraw(100.0)
 print(savings_account)
 savings_service_charge = savings_account.get_service_charges()
 print(f"Calculated Service Charges: ${savings_service_charge:.2f}")
@@ -58,7 +58,7 @@ print(f"Calculated Service Charges: ${savings_service_charge:.2f}")
 print("===================================================")
 # 8. Create an instance of an InvestmentAccount with values of your 
 # choice including a date created within the last 10 years.
-investment_account = InvestmentAccount(500, 425, 200, date(2022, 1, 29), 2)
+investment_account = InvestmentAccount(500, 425, 200.00, date(2022, 1, 29), 2)
 
 # 9a. Print the InvestmentAccount created in step 8.
 # 9b. Print the service charges amount if calculated based on the 
@@ -69,7 +69,7 @@ print(f"Calculated Service Charges: ${investment_service_charge:.2f}")
 
 # 10. Create an instance of an InvestmentAccount with values of your 
 # choice including a date created prior to 10 years ago.
-old_investment_account = InvestmentAccount(100, 50, 2400, date(2002, 2, 10), 5)
+old_investment_account = InvestmentAccount(100, 50, 2400.00, date(2002, 2, 10), 5)
 
 # 11a. Print the InvestmentAccount created in step 10.
 # 11b. Print the service charges amount if calculated based on the 

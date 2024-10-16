@@ -52,19 +52,12 @@ class BankAccount(ABC):
             raise ValueError("Client Number must an integer.")
         
         self.__client_number = client_number
-
-        # this try block validates the balance argument, if it is valid, 
-        # set the __balance attribute to the balance argument, 
-        # if it hits an exception, set the __balance attribute to 0.0 and print an error message
-        try:
-            float(balance)
-        except ValueError:
+        
+        if not isinstance(balance, float):
             balance = 0.0
-            raise ValueError("Invalid balance value. Balance set to 0.0.")
         
         self.__balance = balance
 
-        #
         if not isinstance(date_created, date):
             self._date_created = date.today()
         else:
@@ -107,14 +100,11 @@ class BankAccount(ABC):
         Raises:
             ValueError: When the amount cannot be converted to a float.
         """
-        try:
-            amount = float(amount)
-            self.__balance += amount
-            if amount < 0:
-                amount - self.balance
-        except ValueError:
-            pass
-    
+        if not isinstance(self.__balance, float):
+            self.__balance = self.__balance
+
+        self.__balance += amount
+
     def deposit(self, amount) -> float:
         """
         Deposits the given amount into the account.
@@ -127,11 +117,11 @@ class BankAccount(ABC):
         """
         try:
             float(amount)
-            self.update_balance(amount)
-        except ValueError:
-            raise ValueError(f"Deposit amount: {amount} must be numeric.")
+        except TypeError:
+            raise TypeError(f"Deposit amount: {amount} must be numeric.")
         if amount <= 0:
             raise ValueError(f"Deposit amount: ${amount:,.2f} must be positive.")
+        self.update_balance(amount)
         
     def withdraw(self, amount) -> float:
         """
@@ -145,13 +135,13 @@ class BankAccount(ABC):
         """
         try:
             float(amount)
-            self.update_balance(-abs(amount))
-        except ValueError:
-             raise ValueError(f"Withdraw amount: {amount} must be numeric.")
+        except TypeError:
+             raise TypeError(f"Withdraw amount: {amount} must be numeric.")
         if amount <= 0:
             raise ValueError(f"Withdrawal amount: ${amount:,.2f} must be positive.")
-        if amount > self.balance:
-            raise ValueError(f"Withdrawal amount: ${amount:,.2f} must not exceed the account balance: ${self.balance:,.2f}")
+        if amount > self.__balance:
+            raise ValueError(f"Withdrawal amount: ${amount:,.2f} must not exceed the account balance: ${self.__balance:,.2f}")
+        self.update_balance(-abs(amount))
         
     def __str__(self) -> str:
         """
