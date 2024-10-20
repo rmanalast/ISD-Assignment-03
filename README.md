@@ -20,6 +20,11 @@ Each subclass will inherit the attributes and methods of the base class while ad
 Polymorphism will be used by letting each subclass give its own version of a method from the base class. 
 Unit testing will focus on checking that polymorphism works as expected.
 
+Assignment 3: Applying Design Patterns
+This Assignment is continuing on from the pervious Assignments 1 and 2,
+by fixing the current service charge calculation issues by using the Strategy Pattern to make the system more scalable. 
+It also introduces the Observer Pattern, which notifies clients of large transactions or when their balance drops below a minimum value.
+
 ## Encapsulation
 Encapsulation is a key concept in object-oriented programming. 
 It combines data and methods to protect data from outside interference. 
