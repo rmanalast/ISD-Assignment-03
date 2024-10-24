@@ -1,5 +1,5 @@
 """
-Description: A class to represent SavingsAccount objects.
+Description: Unit tests for the SavingsAccount class.
 Author: Raven Manalastas
 the following command:
     python -m unittest tests/test_savings_account.py

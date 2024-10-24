@@ -1,5 +1,5 @@
 """
-Description: A class to represent InvestmentAccount objects.
+Description: Unit tests for the InvestmentAccount class.
 Author: Raven Manalastas
 the following command:
     python -m unittest tests/test_investment_account.py
