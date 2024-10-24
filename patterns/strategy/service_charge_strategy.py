@@ -8,12 +8,12 @@ from bank_account.bank_account import BankAccount
 class ServiceChargeStrategy (ABC):
     """
     Attributes:
-    BASE_SERVICE_CHARGE (float): A constant representing the base service charge amount.
+        BASE_SERVICE_CHARGE (float): A constant representing the base service charge amount.
 
     Methods:
-    calculate_service_charge(account: BankAccount):
-        Abstract method that calculates the service charge 
-        based on the provided BankAccount instance.
+        (account: BankAccount):
+            Abstract method that calculates the service charge 
+            on the provided BankAccount instance.
     """
     BASE_SERVICE_CHARGE = 0.50 # Constant service charge
 

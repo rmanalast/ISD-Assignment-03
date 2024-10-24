@@ -2,6 +2,7 @@
 Description: A class to manage Bank Account objects.
 Author: Raven Manalastas
 """
+
 from abc import ABC, abstractmethod
 from datetime import date
 

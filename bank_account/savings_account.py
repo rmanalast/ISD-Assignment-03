@@ -9,8 +9,8 @@ from datetime import date
 class SavingsAccount(BankAccount):
     """
     Attributes:
-    Inherited attributes from Bank Account Class
-    __minimum_balance (float): The minimum balance for the savings account
+        Inherited attributes from Bank Account Class
+        (float): The minimum balance for the savings account
 
     Methods:
         Inherited attributes from Bank Account Class
