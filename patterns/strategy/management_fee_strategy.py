@@ -14,11 +14,9 @@ class ManagementFeeStrategy(ServiceChargeStrategy):
     Attributes:
         __date_created (date): The date when the account was created.
         __management_fee (float): The management fee associated with the account.
-        TEN_YEARS_AGO (date): A constant representing the date ten years ago from today.
     
     Methods:
-        calculate_service_charge (account: BankAccount):
-            Calculates the service charge based on the account's creation date.
+        calculate_service_charge (account: BankAccount): Calculates the service charge.
     """
     TEN_YEARS_AGO = date.today() - timedelta(days = 10 * 365.25)
     # Calculate 10 years ago
@@ -37,18 +35,15 @@ class ManagementFeeStrategy(ServiceChargeStrategy):
         if isinstance(management_fee, float):
             self.__management_fee = management_fee
     
-    def calculate_service_charge(self, account: BankAccount):
+    def calculate_service_charge(self, account: BankAccount) -> float:
         """
-        Calculates the service charge based on the account's creation date
-        which if the account is older than 10 years.
+        Calculate service charges based on the account creation date and the management fee.
 
         Args:
-            account (BankAccount): The bank account for 
-            which the service charge is being calculated.
+            account (BankAccount): The bank account to calculate service charges for.
 
         Returns:
-            float: Base service charge for accounts older than 10 years, 
-                   or base charge plus management fee for newer accounts.
+            float: The calculated service charge.
         """
         if self.__date_created <= InvestmentAccount.TEN_YEARS_AGO:
             return BankAccount.BASE_SERVICE_CHARGE

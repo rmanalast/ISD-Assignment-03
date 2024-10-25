@@ -2,7 +2,6 @@
 Description: A class to manage OverdraftStrategy objects.
 Author: Raven Manalastas
 """
-
 from .service_charge_strategy import ServiceChargeStrategy
 from bank_account.bank_account import BankAccount
 
@@ -15,8 +14,8 @@ class OverdraftStrategy(ServiceChargeStrategy):
         __overdraft_rate (float): The rate applied to the amount overdrawn, as a decimal.
     
     Methods:
-        calculate_service_charge (account: BankAccount):
-        
+        calculate_service_charge (account: BankAccount): Calculates the service charge.
+
     """
     def __init__(self, overdraft_limit: float, overdraft_rate: float):
         """
@@ -32,15 +31,15 @@ class OverdraftStrategy(ServiceChargeStrategy):
         if isinstance(overdraft_rate, float):
             self.__overdraft_rate = overdraft_rate
 
-    def calculate_service_charge(self, account: BankAccount):
+    def calculate_service_charge(self, account: BankAccount) -> float:
         """
         Calculates the service charge for the given bank account based on the overdraft strategy.
 
         Args:            
-            account (BankAccount): The bank account for which to calculate the service charge.
+            account (BankAccount): The bank account to calculate service charges for.
 
         Returns:
-            float: The calculated service charge based on the account's balance and the overdraft policy.
+            float: The calculated service charge.
         """
         if account.balance >= self.__overdraft_limit:
             get_service_charge = BankAccount.BASE_SERVICE_CHARGE
