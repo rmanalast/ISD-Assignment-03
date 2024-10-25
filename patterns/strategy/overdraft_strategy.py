@@ -13,6 +13,10 @@ class OverdraftStrategy(ServiceChargeStrategy):
     Attributes:
         __overdraft_limit (float): The maximum amount that can be overdrawn from the account.
         __overdraft_rate (float): The rate applied to the amount overdrawn, as a decimal.
+    
+    Methods:
+        calculate_service_charge (account: BankAccount):
+        
     """
     def __init__(self, overdraft_limit: float, overdraft_rate: float):
         """

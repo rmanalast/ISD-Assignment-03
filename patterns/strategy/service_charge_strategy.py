@@ -11,7 +11,7 @@ class ServiceChargeStrategy (ABC):
         BASE_SERVICE_CHARGE (float): A constant representing the base service charge amount.
 
     Methods:
-        (account: BankAccount):
+        calculate_service_charge (account: BankAccount):
             Abstract method that calculates the service charge 
             on the provided BankAccount instance.
     """
