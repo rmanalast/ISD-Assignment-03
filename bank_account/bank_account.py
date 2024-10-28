@@ -26,7 +26,7 @@ class BankAccount(ABC):
     get_service_charges(): Returns the service charges for the account.
     """
 
-    BASE_SERVICE_CHARGE = 0.50
+    # BASE_SERVICE_CHARGE = 0.50
 
     def __init__(self, account_number: int, client_number: int, balance: float,
                  date_created: date):
@@ -54,8 +54,14 @@ class BankAccount(ABC):
         
         self.__client_number = client_number
         
-        if not isinstance(balance, float):
-            balance = 0.0
+        try:
+            if not isinstance(balance, float):
+                self.__balance = float(balance)
+            else:
+                self.__balance = balance
+        except ValueError:
+            self.__balance = 0.00
+        
         
         self.__balance = balance
 

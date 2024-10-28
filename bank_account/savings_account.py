@@ -4,6 +4,7 @@ Author: Raven Manalastas
 """
 
 from bank_account.bank_account import BankAccount
+from patterns.strategy.minimum_balance_strategy import MinimumBalanceStrategy
 from datetime import date
 
 class SavingsAccount(BankAccount):
@@ -29,13 +30,16 @@ class SavingsAccount(BankAccount):
         """
         super().__init__(account_number, client_number, balance, date_created)
 
-        self.SERVICE_CHARGE_PREMIUM = 2.00
+        # self.SERVICE_CHARGE_PREMIUM = 2.00
 
         # Validate and set the minimum_balance
         try:
             self.__minimum_balance = float(minimum_balance)
         except ValueError:
-            self.__minimum_balance = 50
+            self.__minimum_balance = 50.0
+
+        # Initialize MinimumBalanceStrategy with appropriate arguments
+        self._minimum_balance_strategy = MinimumBalanceStrategy(self.__minimum_balance)
 
     def __str__(self) -> str:
         """
@@ -56,9 +60,15 @@ class SavingsAccount(BankAccount):
             float: The total service charges for the account, 
                    which may vary based on the minimum balance requirement.
         """
-        if self.balance >= self.__minimum_balance:
-            get_service_charge = self.BASE_SERVICE_CHARGE
-        else:
-            get_service_charge = self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
-        
-        return get_service_charge
+        # Use the MinimumBalanceStrategy to calculate service charges based on the balance
+
+        return self._minimum_balance_strategy.calculate_service_charge(self)
+
+# - Old logic commented out
+#        if self.balance >= self.__minimum_balance:
+#            get_service_charge = self.BASE_SERVICE_CHARGE
+#        else:
+#            get_service_charge = self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
+#        
+#        return get_service_charge
+# - Old logic commented out

@@ -4,6 +4,7 @@ Author: Raven Manalastas
 """
 
 from bank_account.bank_account import BankAccount
+from patterns.strategy.management_fee_strategy import ManagementFeeStrategy
 from datetime import date, timedelta
 
 class InvestmentAccount(BankAccount):
@@ -37,6 +38,11 @@ class InvestmentAccount(BankAccount):
         except ValueError:
             self.__management_fee = 2.55
 
+        # Initialize ManagementFeeStrategy with appropriate arguments
+        self.__management_fee_strategy = ManagementFeeStrategy(self._date_created, 
+                                                               self.__management_fee, 
+                                                               self.TEN_YEARS_AGO)
+
     def __str__(self) -> str:
         """
         Returns a string representation of the InvestmentAccount object.
@@ -50,7 +56,7 @@ class InvestmentAccount(BankAccount):
         # of the bank_account string
         string = super().__str__() 
 
-        if self.TEN_YEARS_AGO <= self._date_created:
+        if self.TEN_YEARS_AGO < self._date_created:
             
             string += (f"\nDate Created: {self._date_created} "
                        f"Management Fee: ${self.__management_fee:.2f} "
@@ -69,9 +75,15 @@ class InvestmentAccount(BankAccount):
             float: The total service charges for the account, 
                    which may vary based on the account's creation date and management fee.
         """
-        if self._date_created < self.TEN_YEARS_AGO:
-            get_service_charge = self.BASE_SERVICE_CHARGE
-        else:
-            get_service_charge = self.BASE_SERVICE_CHARGE + self.__management_fee
+        # Use the ManagementFeeStrategy to calculate service charges based on the account's details
 
-        return get_service_charge
+        return self.__management_fee_strategy.calculate_service_charge(self)
+
+# - Old logic commented out
+#        if self._date_created < self.TEN_YEARS_AGO:
+#            get_service_charge = self.BASE_SERVICE_CHARGE
+#        else:
+#            get_service_charge = self.BASE_SERVICE_CHARGE + self.__management_fee
+#
+#       return get_service_charge
+# - Old logic commented out

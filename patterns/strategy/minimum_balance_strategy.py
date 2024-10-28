@@ -3,8 +3,6 @@ Description: A class to manage MinimumBalanceStrategy objects.
 Author: Raven Manalastas
 """
 from .service_charge_strategy import ServiceChargeStrategy
-from bank_account.bank_account import BankAccount
-from bank_account.savings_account import SavingsAccount
 
 class MinimumBalanceStrategy(ServiceChargeStrategy):
     """
@@ -25,10 +23,12 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
         Args:
             minimum_balance (float): The minimum balance required to avoid a premium service charge.
         """
+        super().__init__()
+
         if isinstance (minimum_balance, float):
             self.__minimum_balance = minimum_balance
 
-    def calculate_service_charge(self, account: BankAccount) -> float:
+    def calculate_service_charge(self, account):
         """
         Calculate service charges based on whether the account balance is below the minimum balance.
 
@@ -39,6 +39,8 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
             float: The calculated service charge.
         """
         if account.balance >= self.__minimum_balance:
-            return BankAccount.BASE_SERVICE_CHARGE
+            get_service_charge = self.BASE_SERVICE_CHARGE
         else:
-            return BankAccount.BASE_SERVICE_CHARGE * SavingsAccount.SERVICE_CHARGE_PREMIUM
+            get_service_charge = self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
+        
+        return get_service_charge
