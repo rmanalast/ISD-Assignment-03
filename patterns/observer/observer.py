@@ -5,7 +5,9 @@ Author: Raven Manalastas
 from abc import ABC, abstractmethod
 
 class Observer(ABC):
-    """ 
+    """
+    An abstract class that represents the observers.
+
     Methods:
         update (message: str): Called to notify the observer of a change.
     """
