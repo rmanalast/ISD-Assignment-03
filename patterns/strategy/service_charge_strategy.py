@@ -14,7 +14,8 @@ class ServiceChargeStrategy (ABC):
     """
     @abstractmethod
     def __init__(self):
-        """ Initializes a newly created ServiceChargeStrategy abstract class.
+        """ 
+        Initializes a newly created ServiceChargeStrategy abstract class.
         """
         
         self.BASE_SERVICE_CHARGE = 0.50 # Constant service charge
