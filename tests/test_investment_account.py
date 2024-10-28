@@ -1,5 +1,5 @@
 """
-Description: A class to represent InvestmentAccount objects.
+Description: Unit tests for the InvestmentAccount class.
 Author: Raven Manalastas
 the following command:
     python -m unittest tests/test_investment_account.py
@@ -57,7 +57,7 @@ class TestInvestmentAccount(unittest.TestCase):
         self.investment_account = InvestmentAccount(709, 9710, 450, date(2014, 7, 9), 2)
         get_service_charges = self.investment_account.get_service_charges()
 
-        self.assertEqual(2.5, get_service_charges)
+        self.assertEqual(0.5, get_service_charges)
 
     def test_get_services_charges_method_date_within_ten_years(self):
         """

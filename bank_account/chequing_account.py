@@ -4,6 +4,7 @@ Author: Raven Manalastas
 """
 
 from bank_account.bank_account import BankAccount
+from patterns.strategy.overdraft_strategy import OverdraftStrategy
 from datetime import date
 
 class ChequingAccount(BankAccount):
@@ -44,6 +45,9 @@ class ChequingAccount(BankAccount):
         except ValueError:
             self.__overdraft_rate = 0.05
 
+        # Initialize OverdraftStrategy with appropriate arguments
+        self.__overdraft_strategy = OverdraftStrategy(self.__overdraft_limit, self.__overdraft_rate)
+
     def __str__(self) -> str:
         """
         Returns a string representation of the ChequingAccount object.
@@ -64,7 +68,13 @@ class ChequingAccount(BankAccount):
             float: The total service charges for the account, 
                    the overdraft limit and rate if applicable.
         """
-        if self.balance >= self.__overdraft_limit:
-            return self.BASE_SERVICE_CHARGE
-        else:
-            return self.BASE_SERVICE_CHARGE + (self.__overdraft_limit - self.balance) * self.__overdraft_rate
+        # Use the strategy to calculate service charges based on the balance
+
+        return self.__overdraft_strategy.calculate_service_charge(self)
+
+# - Old logic commented out
+#        if self.balance >= self.__overdraft_limit:
+#            return self.BASE_SERVICE_CHARGE
+#        else:
+#            return self.BASE_SERVICE_CHARGE + (self.__overdraft_limit - self.balance) * self.__overdraft_rate
+# - Old logic commented out

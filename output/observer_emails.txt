@@ -1,0 +1,15 @@
+---
+To: rmanalastas@pixell-river.com
+Subject: ALERT: Unusual Activity: 2024-10-27 22:38:00.279941
+Message: Notification for 7910: Raven Manalastas: Large transaction 10000.0: on account 123
+---
+---
+To: rmanalastas@pixell-river.com
+Subject: ALERT: Unusual Activity: 2024-10-27 22:38:00.281936
+Message: Notification for 7910: Raven Manalastas: Large transaction 10000.0: on account 456
+---
+---
+To: rmanalastas@pixell-river.com
+Subject: ALERT: Unusual Activity: 2024-10-27 22:38:00.281936
+Message: Notification for 1079: Raven Manalastas: Large transaction 10000.0: on account 789
+---

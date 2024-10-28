@@ -39,3 +39,18 @@ where the 'get_service_charges()' method is implemented differently in each subc
 to provide a specific implementation for each account type.
 This allows objects of different BankAccount subclasses to be treated as objects of a common superclass, 
 providing increased flexibility, improved code reuse, and easier maintenance.
+
+## Strategy Pattern
+The Strategy pattern was used in this assignment to manage different service charge 
+calculations for each account type, providing flexibility in how charges are applied. 
+I created separate strategy classes for each account’s unique service charge formula and connected them to the get_service_charge method. 
+This setup allows each account to automatically select the correct calculation. 
+Additionally, this design makes it easy to add or update service charge strategies in the future without altering the main account classes.
+
+## Observer Pattern
+The Observer Pattern was used in this assignment to manage notifications for different types of BankAccounts. 
+The Subject class handles adding, removing, and notifying observers through their update methods. 
+I created the Client class, which inherits from the Observer superclass, to define how notifications are handled. 
+This allows Client instances to observe multiple BankAccount types and receive updates when important events occur, 
+like large transactions or low balances during deposits and withdrawals. 
+This design makes it easy to add or change observers in the future without affecting the main BankAccount classes.

@@ -1,5 +1,5 @@
 """
-Description: A class to represent ChequingAccount objects.
+Description: Unit tests for the ChequingAccount class.
 Author: Raven Manalastas
 the following command:
     python -m unittest tests/test_chequing_account.py

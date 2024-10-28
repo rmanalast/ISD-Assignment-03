@@ -4,8 +4,11 @@ Author: Raven Manalastas
 """
 
 from email_validator import validate_email, EmailNotValidError
+from patterns.observer.observer import Observer
+from utility.file_utils import simulate_send_email
+from datetime import datetime
 
-class Client:
+class Client(Observer):
     """
     Attributes:
     __client_number (int): An integer value representing the client number.
@@ -20,6 +23,7 @@ class Client:
     last_name(): Accessor for the last_name atrribute.
     email_address(): Acccessor for the email_address atrribute.
     __str__ (): Returns a string representation of the client object.
+    update(message: str): Sends a notification email to the client with the provided message.
     """
 
     def __init__(self, client_number: int, first_name: str, last_name: str, email_address: str):
@@ -38,6 +42,8 @@ class Client:
                 When the last name is blank.
                 When the email address is invalid.
         """
+        super().__init__()
+
         if isinstance(client_number, int):
             self.__client_number = client_number
         else:
@@ -103,3 +109,18 @@ class Client:
         Returns a string representation of the client object.
         """
         return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_address}"
+    
+    def update(self, message: str):
+        """
+        Sends a notification email to the client with the provided message.
+
+        Args:
+            message (str): The message to be sent to the client.
+
+        Returns:
+            None
+        """
+        simulate_send_email(self.__email_address,
+            f"ALERT: Unusual Activity: {datetime.now()}",
+            f"Notification for {self.__client_number}: {self.__first_name} {self.__last_name}: {message}"
+        )
