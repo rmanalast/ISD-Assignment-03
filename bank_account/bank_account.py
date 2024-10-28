@@ -46,6 +46,8 @@ class BankAccount(Subject, ABC):
                     When the client number is non-numeric/integer.
                     When the balance cannot be converted to a float
         """
+        super().__init__()
+
         if not isinstance(account_number, int):
             raise ValueError("Account number must be an integer.")
         
